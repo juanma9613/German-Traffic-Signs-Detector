@@ -40,8 +40,7 @@ def test(model, directory):
     elif (model=='Model2' or model=='TFLogReg'):
         LogRegTensorFlow.testLogReg(Directory_Test=directory)    
     elif (model=='Model3'or model=='LeNet'):
-        testAndInferLeNet.testLeNet5(Directory_Test='/images/test' ,ModelPath='/models/model3/saved/')
-#    msg = "I should be testing model {} with data from directory {}"
+        testAndInferLeNet.testLeNet5(Directory_Test=directory ,ModelPath='/models/model3/saved/')
 @main.command("infer")
 @click.option('-m', '--model',help=' Enter Model1 or SKLogReg for the scikit logistic regresion \
               \n\n or Enter Model2 or TFLogReg for the Tensorflow logistic regresion \

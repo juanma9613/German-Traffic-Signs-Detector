@@ -56,7 +56,7 @@ def LogRegressionTest(DirectoryToTest='/images/test',pathToLoadSc=os.getcwd()+'/
     LR = joblib.load(pathLoadLogRegModel) 
     X_test_std = SC.transform(xImages)
     
-    print('Test accuracy:', LR.score(X_test_std, Y_labels))
+    print('Test accuracy:', 100.00*LR.score(X_test_std, Y_labels))
     return
 def LogRegressionInfer(DirectoryToInfer='/images/user',pathToLoadSc=os.getcwd()+'/models/model1/saved/scaler.pkl',
                        pathLoadLogRegModel=os.getcwd()+ '/models/model1/saved/modelScikit.pkl',Regularization=10):

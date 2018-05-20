@@ -5,11 +5,7 @@ Created on Thu May 17 11:26:35 2018
 
 @author: LinaMaria
 """
-import urllib.request
 import os
-from sklearn.model_selection import train_test_split
-from linearRegTrain import SCReg
-from linearRegTrain import SCEval
 import tensorflow as tf
 import numpy as np
 from PIL import Image
