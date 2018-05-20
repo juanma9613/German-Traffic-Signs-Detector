@@ -1,5 +1,10 @@
-import os
-import tensorflow as tf
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
+Packages
+tensorflow version 1.1.0
+numpy version 1.13.3
+matplotlib.pyplot
+PIL 4.2.1
+cv2 3.3.1
+Python 3.5.2
+conda version 4.5.4
+sklearn 0.19.0
+click 6.6

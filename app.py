@@ -20,7 +20,7 @@ def download():
               \n\n or Enter Model2 or TFLogReg for the Tensorflow logistic regresion \
               \n\n or Enter Model3 or LeNet for the Tensorflow LeNetImplementation')
 @click.option('-d', '--directory',help='enter a global path between "" symbol and use \
-                          \ between folders example "C:\Who\Desktop\GermanSigns\images\\train" \n\n\n or You can also give a relative path \n inside the Working directory example: /images/train')
+                          \ between folders example "C:\Who\Desktop\GermanSigns\images\\train" \n\n\n or You can also give a relative path \n inside the Working directory example: "/images/train"')
 def train(model, directory):
     if (model=='Model1' or model=='SKLogReg'):
         SKLogRegression.LogRegressionTrain(DirectoryToTrain=directory)
@@ -33,7 +33,7 @@ def train(model, directory):
               \n\n or Enter Model2 or TFLogReg for the Tensorflow logistic regresion \
               \n\n or Enter Model3 or LeNet for the Tensorflow LeNetImplementation')
 @click.option('-d', '--directory',help='enter a global path between "" symbol and use \
-                          \ between folders example "C:\Who\Desktop\GermanSigns\images\\test" \n\n\n or You can also give a relative path \n inside the Working directory example: /images/test')
+                          \ between folders example "C:\Who\Desktop\GermanSigns\images\\test" \n\n\n or You can also give a relative path \n inside the Working directory example: "/images/test"')
 def test(model, directory):
     if (model=='Model1' or model=='SKLogReg'):
         SKLogRegression.LogRegressionTest(DirectoryToTest=directory)
@@ -47,7 +47,7 @@ def test(model, directory):
               \n\n or Enter Model2 or TFLogReg for the Tensorflow logistic regresion \
               \n\n or Enter Model3 or LeNet for the Tensorflow LeNetImplementation')
 @click.option('-d', '--directory',help='enter a global path between "" symbol and use \
-                          \ between folders example "C:\Who\Desktop\GermanSigns\images\\user" \n\n\n or You can also give a relative path \n inside the Working directory example: /images/user')
+                          \ between folders example "C:\Who\Desktop\GermanSigns\images\\user" \n\n\n or You can also give a relative path \n inside the Working directory example: "/images/user"')
 def infer(model, directory):
     if (model=='Model1' or model=='SKLogReg'):
             SKLogRegression.LogRegressionInfer(DirectoryToInfer=directory)
