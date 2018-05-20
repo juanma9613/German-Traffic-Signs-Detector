@@ -27,7 +27,7 @@ def train(model, directory):
     elif (model=='Model2' or model=='TFLogReg'):
         LogRegTensorFlow.LogRegTrain(TrainImagesDirectory=directory)
     elif (model=='Model3'or model=='LeNet'):
-        LeNet5.TrainAndSave(Directory_Train=directory,EPOCHS=30)
+        LeNet5.TrainAndSave(Directory_Train=directory,EPOCHS=50)
 @main.command("test")
 @click.option('-m', '--model',help=' Enter Model1 or SKLogReg for the scikit logistic regresion \
               \n\n or Enter Model2 or TFLogReg for the Tensorflow logistic regresion \

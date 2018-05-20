@@ -14,7 +14,7 @@ from tensorflow.contrib.layers import flatten
 from sklearn.utils import shuffle
 
 
-def evaluate(x,y,accuracy_operation,sess,X_data, y_data, BATCH_SIZE=64):
+def evaluate(x,y,accuracy_operation,sess,X_data, y_data):
     """A FUNCTION TO EVALUATE THE ACCURACY OF THE CNN IN THE TRAINNING DATA
     INPUTS 
     1. x tfplace holder size(?,32,32,1)
@@ -22,24 +22,13 @@ def evaluate(x,y,accuracy_operation,sess,X_data, y_data, BATCH_SIZE=64):
     3.accuracy_operation ---->the operation in the NN to determine wheter a N fails 
     4.X_data np.array(Nimages,32,32,1)
     5 y_data list of len (Nimages) 
-    6.BATCH_SIZE size of the batch to evaluate the accuracy
     
     OUTPUT 
-    1 total_accuracy / num_examples IT IT THE ACCURACY OF THE NN
-    
-    
-    OUTPUT
+    1 total_accuracy OF THE NN
     """
-#    print(X_data[0:64],y_data[0:64])
-    num_examples = len(X_data)
-    total_accuracy = 0
     sess = tf.get_default_session()
-#    print(X_data.shape)
-    for offset in range(0, num_examples, BATCH_SIZE):
-        batch_x, batch_y = X_data[offset:offset+BATCH_SIZE], y_data[offset:offset+BATCH_SIZE]
-        accuracy=sess.run(accuracy_operation, feed_dict={x: batch_x, y: batch_y})
-        total_accuracy += (accuracy * len(batch_x))
-    return total_accuracy / num_examples
+    accuracy=sess.run(accuracy_operation, feed_dict={x: X_data, y: y_data})
+    return accuracy
 
 def getImagesAndLabels(DirectoryToSearch, TypeOfImage=1,IsCNN=True):
     """

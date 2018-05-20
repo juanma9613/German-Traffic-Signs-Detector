@@ -13,7 +13,7 @@ from PIL import Image
 #from LeNet5 import getImagesAndLabels
 import LeNet5
 import GetImages
-def evaluate(X,Y,acOp,X_data, y_data, BATCH_SIZE=64):
+def evaluate(X,Y,acOp,X_data, y_data):
     """A FUNCTION TO EVALUATE THE ACCURACY OF THE CNN IN THE TRAINNING DATA
     INPUTS 
     1. x tfplace holder size(?,32,32,1)
@@ -24,22 +24,12 @@ def evaluate(X,Y,acOp,X_data, y_data, BATCH_SIZE=64):
     6.BATCH_SIZE size of the batch to evaluate the accuracy
     
     OUTPUT 
-    1 total_accuracy / num_examples IT IT THE ACCURACY OF THE NN
+    1 total_accuracy  OF THE NN
     """
-    num_examples = len(X_data)
-    total_accuracy = 0
     sess = tf.get_default_session()
-    for offset in range(0, num_examples, BATCH_SIZE):
-        batch_x, batch_y = X_data[offset:offset+BATCH_SIZE], y_data[offset:offset+BATCH_SIZE]
-#        accuracy = sess.run(accuracy_operation, 
-#                            feed_dict={x: batch_x, y: batch_y, keep_prob: 1.0, keep_prob_conv: 1.0 })
-        accuracy=sess.run(acOp, feed_dict={X: batch_x, Y: batch_y})
+    accuracy=sess.run(acOp, feed_dict={X: X_data, Y: y_data})
+    return accuracy
 
-
-        total_accuracy += (accuracy * len(batch_x))
-    return total_accuracy / num_examples
-    
-    
 def testLeNet5(Directory_Test='/images/test' ,ModelPath='/models/model3/saved/'):
     """
     A function that loads the lenet5 model located in ModelPath 
@@ -61,7 +51,7 @@ def testLeNet5(Directory_Test='/images/test' ,ModelPath='/models/model3/saved/')
         X=graph.get_tensor_by_name("X:0")
         Y=graph.get_tensor_by_name("Y:0")
         acOp=graph.get_tensor_by_name("accuracyOp:0")
-        validation_accuracy=evaluate(X,Y,acOp,X_test, Y_test, BATCH_SIZE=64)
+        validation_accuracy=evaluate(X,Y,acOp,X_test, Y_test)
         print("\n\nTest Accuracy = {:.2f}%".format( (validation_accuracy*100)))
     return
 def inferLeNet5(Directory_infer='/images/user' ,ModelPath='/models/model3/saved/'):

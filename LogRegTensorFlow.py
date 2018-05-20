@@ -17,7 +17,7 @@ import GetImages
 
 
 
-def evaluate(xTensor,yTensor,accuracy_operation,X_data, y_data, BATCH_SIZE=64):
+def evaluate(xTensor,yTensor,accuracy_operation,X_data, y_data):
     """A FUNCTION TO EVALUATE THE ACCURACY OF THE LOGREG IN THE DATA
     INPUTS 
     1. x tfplace holder size(?,32*32)
@@ -25,23 +25,16 @@ def evaluate(xTensor,yTensor,accuracy_operation,X_data, y_data, BATCH_SIZE=64):
     3.accuracy_operation ---->the operation in the Logreg to determine if a LOGREG fails 
     4.X_data np.array(Nimages,32*32)
     5 y_data list of len (Nimages) 
-    6.BATCH_SIZE size of the batch to evaluate the accuracy
+   
     
     OUTPUT 
     1 total_accuracy / num_examples IT IT THE ACCURACY OF THE LOGREG
     OUTPUT
     """
-    num_examples = len(X_data)
-    total_accuracy = 0
     sess = tf.get_default_session()
-    #    print(X_data.shape)
-    for offset in range(0, num_examples, BATCH_SIZE):
-        batch_x, batch_y = X_data[offset:offset+BATCH_SIZE], y_data[offset:offset+BATCH_SIZE]
-        accuracy=sess.run(accuracy_operation, feed_dict={xTensor: batch_x, yTensor: batch_y})
-        total_accuracy += (accuracy * len(batch_x))
-    return total_accuracy / num_examples
+    accuracy=sess.run(accuracy_operation, feed_dict={xTensor: X_data, yTensor: y_data})
+    return accuracy
 
-#s = pickle.dumps(clf)
 def LogRegTrain(TrainImagesDirectory='/images/train',pathToSave=os.getcwd()+'/models/model2/saved/', BATCH_SIZE=64,EPOCHS=50,learning_rate=0.01,
         n_out=43):       
     """
@@ -112,7 +105,7 @@ def testLogReg(Directory_Test='/images/test' ,ModelPath='/models/model2/saved/')
         X=graph.get_tensor_by_name("X:0")
         Y=graph.get_tensor_by_name("Y:0")
         acOp=graph.get_tensor_by_name("accuracyOp:0")
-        validation_accuracy=evaluate(X,Y,acOp,X_test, Y_test, BATCH_SIZE=64)
+        validation_accuracy=evaluate(X,Y,acOp,X_test, Y_test)
         print("\n\nTest Accuracy = {:.2f}%".format( (validation_accuracy*100)))
     return
 def inferLogReg(Directory_infer='/images/user' ,ModelPath='/models/model2/saved/'):
