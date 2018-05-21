@@ -21,7 +21,7 @@ def evaluate(X,Y,acOp,X_data, y_data):
     3.accuracy_operation ---->the operation in the NN to determine wheter a N fails 
     4.X_data np.array(Nimages,32,32,1)
     5 y_data list of len (Nimages) 
-    6.BATCH_SIZE size of the batch to evaluate the accuracy
+
     
     OUTPUT 
     1 total_accuracy  OF THE NN
