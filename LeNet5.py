@@ -99,7 +99,7 @@ def getImagesAndLabels(DirectoryToSearch, TypeOfImage=1,IsCNN=True):
         return xImages,Y_labels,trainFolder
     return xImages,Y_labels
     
-def TrainAndSave(pathToSave=os.getcwd()+'/models/model3/saved/',mu=0.0,sigma=0.1,EPOCHS=20,BATCH_SIZE=64,Directory_Train='train'):
+def TrainAndSave(pathToSave=os.getcwd()+'/models/model3/saved/',mu=0.0,sigma=0.1,EPOCHS=50,BATCH_SIZE=64,Directory_Train='train'):
     """
    **. INPUTS 
    1.pathToSave------------->DEFAULT PATH  REPOSITORY_WD/models/model3/saved/'

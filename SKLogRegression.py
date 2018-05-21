@@ -33,7 +33,7 @@ def LogRegressionTrain(DirectoryToTrain='/images/train',pathToSaveSc=os.getcwd()
     lr.fit(X_train_std, Y_labels)
     joblib.dump(sc,pathToSaveSc) 
     joblib.dump(lr,pathSaveLogRegModel) 
-    print('\n Training accuracy:', lr.score(X_train_std, Y_labels))
+    print('\n Training accuracy:', 100.00*lr.score(X_train_std, Y_labels))
     return
     
 def LogRegressionTest(DirectoryToTest='/images/test',pathToLoadSc=os.getcwd()+'/models/model1/saved/scaler.pkl',
